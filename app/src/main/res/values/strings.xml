@@ -26,7 +26,7 @@
     <string name = "backspace">Del</string>
     <string name ="negate">+/-</string>
 
-    <string name="textViewDefault">0</string>
+    <string name="display">Enter in a value</string>
 
     <string name="placeholder"> </string>
 </resources>
