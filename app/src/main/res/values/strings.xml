@@ -11,6 +11,8 @@
     <string name="Eight">8</string>
     <string name="Nine">9</string>
     <string name="Zero">0</string>
+
+
     <string name="Minus">-</string>
     <string name="Add">+</string>
     <string name="Multiply">*</string>
@@ -18,5 +20,13 @@
     <string name="Equals">=</string>
     <string name="Decimal">.</string>
 
+    <string name = "clear">C</string>
+    <string name = "exponent">^</string>
+    <string name = "parenthesis">()</string>
+    <string name = "backspace">Del</string>
+    <string name ="negate">+/-</string>
+
     <string name="textViewDefault">0</string>
+
+    <string name="placeholder"> </string>
 </resources>
