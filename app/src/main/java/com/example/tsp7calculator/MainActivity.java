@@ -5,8 +5,12 @@ import org.mariuszgromada.math.mxparser.*;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
         prevCalc = findViewById(R.id.textView);
         display = findViewById(R.id.output);
-
         display.setShowSoftInputOnFocus(false);
 
         display.setOnClickListener(new View.OnClickListener(){
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             display.setSelection(cursorPos + 1);
         } else{
             display.setText(String.format("%s%s%s", leftStr, strToAdd, rightStr));
-            display.setSelection(cursorPos + 1);
+            display.setSelection(cursorPos + strToAdd.length());
         }
     }
 
@@ -120,11 +126,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void equalsBTN(View view){
         String userExp = display.getText().toString();
-
         Expression exp = new Expression(userExp);
-
         String result = String.valueOf(exp.calculate());
 
+        prevCalc.setText(userExp);
         display.setText(result);
         display.setSelection(result.length());
     }
