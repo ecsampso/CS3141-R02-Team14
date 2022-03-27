@@ -1,196 +1,149 @@
 package com.example.tsp7calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import org.mariuszgromada.math.mxparser.*;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button0, button1, button2, button3, button4, button5, button6,
-            button7, button8, button9, buttonAdd, buttonSub, buttonDivision,
-            buttonMul, button10, buttonC, buttonEqual;
-
-    EditText editText;
-
-    float mValueOne, mValueTwo;
-
-    boolean add, sub, mult, div;
+    private EditText display;
+    private TextView prevCalc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button0 = (Button) findViewById(R.id.button41);
-        button1 = (Button) findViewById(R.id.button35);
-        button2 = (Button) findViewById(R.id.button34);
-        button3 = (Button) findViewById(R.id.button33);
-        button4 = (Button) findViewById(R.id.button31);
-        button5 = (Button) findViewById(R.id.button30);
-        button6 = (Button) findViewById(R.id.button29);
-        button7 = (Button) findViewById(R.id.button27);
-        button8 = (Button) findViewById(R.id.button26);
-        button9 = (Button) findViewById(R.id.button25);
-        button10 = (Button) findViewById(R.id.button22);
-        buttonAdd = (Button) findViewById(R.id.button32);
-        buttonSub = (Button) findViewById(R.id.button28);
-        buttonMul = (Button) findViewById(R.id.button24);
-        buttonDivision = (Button) findViewById(R.id.button39);
-        buttonC = (Button) findViewById(R.id.button40);
-        buttonEqual = (Button) findViewById(R.id.button21);
-        editText = (EditText) findViewById(R.id.editTextTextPersonName);
+        prevCalc = findViewById(R.id.textView);
+        display = findViewById(R.id.output);
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "1");
-            }
-        } );
+        display.setShowSoftInputOnFocus(false);
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "2");
-            }
-        } );
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "3");
-            }
-        } );
-
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "4");
-            }
-        } );
-
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "5");
-            }
-        } );
-
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "6");
-            }
-        } );
-
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "7");
-            }
-        } );
-
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "8");
-            }
-        } );
-
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "9");
-            }
-        } );
-
-        button0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + "0");
-            }
-        } );
-
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editText == null) {
-                    editText.setText("");
-                } else {
-                    mValueOne = Float.parseFloat(editText.getText() + "");
-                    add = true;
-                    editText.setText(null);
-                }
-            }
-        });
-
-        buttonSub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mValueOne = Float.parseFloat(editText.getText() + "");
-                sub = true;
-                editText.setText(null);
-            }
-        });
-
-        buttonMul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mValueOne = Float.parseFloat(editText.getText() + "");
-                mult = true;
-                editText.setText(null);
-            }
-        });
-
-        buttonDivision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mValueOne = Float.parseFloat(editText.getText() + "");
-                div = true;
-                editText.setText(null);
-            }
-        });
-
-        buttonEqual.setOnClickListener(new View.OnClickListener() {
+        display.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                mValueTwo = Float.parseFloat(editText.getText() + "");
+                if (getString(R.string.display).equals(display.getText().toString())){
+                    display.setText("");
 
-                if (add) {
-                    editText.setText((mValueOne + mValueTwo + ""));
-                    add = false;
-                }
-
-                if (sub) {
-                    editText.setText(mValueOne - mValueTwo + "");
-                    sub = false;
-                }
-
-                if (mult) {
-                    editText.setText(mValueOne * mValueTwo + "");
-                    mult = false;
-                }
-
-                if (div) {
-                    editText.setText(mValueOne / mValueTwo + "");
                 }
             }
         });
+    }
 
-        buttonC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText("");
-            }
-        });
+    private void updateText(String strToAdd){
+        String oldStr = display.getText().toString();
+        int cursorPos = display.getSelectionStart();
+        String leftStr = oldStr.substring(0, cursorPos);
+        String rightStr = oldStr.substring(cursorPos);
 
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setText(editText.getText() + ".");
+        if (getString(R.string.display).equals(display.getText().toString())) {
+            display.setText(strToAdd);
+            display.setSelection(cursorPos + 1);
+        } else{
+            display.setText(String.format("%s%s%s", leftStr, strToAdd, rightStr));
+            display.setSelection(cursorPos + 1);
+        }
+    }
+
+    public void zeroBTN(View view){
+        updateText("0");
+    }
+    public void oneBTN(View view){
+         updateText("1");
+    }
+    public void twoBTN(View view){
+        updateText("2");
+    }
+    public void threeBTN(View view){
+        updateText("3");
+    }
+    public void fourBTN(View view){
+        updateText("4");
+    }
+    public void fiveBTN(View view){
+        updateText("5");
+    }
+    public void sixBTN(View view){
+        updateText("6");
+    }
+    public void sevenBTN(View view){
+        updateText("7");
+    }
+    public void eightBTN(View view){
+        updateText("8");
+    }
+    public void nineBTN(View view){
+        updateText("9");
+    }
+    public void addBTN(View view){
+        updateText("+");
+    }
+    public void subBTN(View view){
+        updateText("-");
+    }
+    public void divideBTN(View view){
+        updateText("/");
+    }
+    public void mulBTN(View view){ updateText("*"); }
+    public void negateBTN(View view){ updateText("-"); }
+    public void clearBTN(View view){ display.setText(""); }
+    public void parenBTN(View view){
+        int cursorPos = display.getSelectionStart();
+        int openPar = 0;
+        int closePar = 0;
+        int textLen = display.getText().length();
+
+        for (int i = 0; i < cursorPos; i++){
+            if (display.getText().toString().substring(i, i+1).equals("(")){
+                openPar += 1;
             }
-        });
+            if (display.getText().toString().substring(i, i+1).equals(")")){
+                closePar += 1;
+            }
+
+
+        }
+
+        if (openPar == closePar || display.getText().toString().substring(textLen-1, textLen).equals("(")){
+            updateText("(");
+            display.setSelection(cursorPos + 1);
+        }
+
+        else if (closePar < openPar && !display.getText().toString().substring(textLen-1, textLen).equals("(")){
+            updateText(")");
+            display.setSelection(cursorPos + 1);
+        }
+    }
+    public void equalsBTN(View view){
+        String userExp = display.getText().toString();
+
+        Expression exp = new Expression(userExp);
+
+        String result = String.valueOf(exp.calculate());
+
+        display.setText(result);
+        display.setSelection(result.length());
+    }
+    public void delBTN(View view){
+        int cursorPos = display.getSelectionStart();
+        int textLen = display.getText().length();
+
+        if (cursorPos != 0 && textLen != 0){
+            SpannableStringBuilder selection = (SpannableStringBuilder) display.getText();
+            selection.replace(cursorPos - 1, cursorPos, "");
+            display.setText(selection);
+            display.setSelection(cursorPos - 1);
+
+        }
+    }
+    public void expBTN(View view){
+        updateText("^");
+    }
+    public void decimalBTN(View view){
+        updateText(".");
     }
 }
