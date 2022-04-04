@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText display;
     private TextView prevCalc;
+    boolean equals = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         String leftStr = oldStr.substring(0, cursorPos);
         String rightStr = oldStr.substring(cursorPos);
 
+        if(equals) {
+            equals = false;
+            prevCalc.setText(oldStr);
+        }
         if (getString(R.string.display).equals(display.getText().toString())) {
             display.setText(strToAdd);
             display.setSelection(cursorPos + 1);
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         Expression exp = new Expression(userExp);
         String result = String.valueOf(exp.calculate());
 
+        equals = true;
         prevCalc.setText(userExp);
         display.setText(result);
         display.setSelection(result.length());
@@ -145,8 +151,56 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    public void trigSinBTN(View view) {
+        updateText("sin(");
+    }
+
+    public void trigCosBTN(View view) {
+        updateText("cos(");
+    }
+
+    public void trigTanBTN(View view) {
+        updateText("tan(");
+    }
+
+    public void trigInsinBTN(View view) {
+        updateText("arcsin(");
+    }
+
+    public void trigIncosBTN(View view) {
+        updateText("arccos(");
+    }
+
+    public void trigIntanBTN(View view) {
+        updateText("arctan(");
+    }
+
+    public void trigLogBTN(View view) {
+        updateText("log(");
+    }
+
+    public void trigLnBTN(View view) {
+        updateText("ln(");
+    }
+
+    public void trigSqrtBTN(View view) {
+        updateText("sqrt(");
+    }
+
+    public void trigEBTN(View view) {
+        updateText("pi");
+    }
+
+    public void trigPiBTN(View view) {
+        updateText("e");
+    }
+
+    public void trigAbsvalBTN(View view) {
+        updateText("abs(");
+    }
     public void expBTN(View view){
-        updateText("^");
+        updateText("^(");
     }
     public void decimalBTN(View view){
         updateText(".");
