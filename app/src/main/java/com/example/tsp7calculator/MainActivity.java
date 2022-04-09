@@ -189,11 +189,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void trigEBTN(View view) {
-        updateText("pi");
+        updateText("e");
     }
 
     public void trigPiBTN(View view) {
-        updateText("e");
+        updateText("pi");
     }
 
     public void trigAbsvalBTN(View view) {

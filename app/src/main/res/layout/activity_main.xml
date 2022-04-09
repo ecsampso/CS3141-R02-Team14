@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DD000000"
     android:onClick="zeroBTN"
     tools:context=".MainActivity">
 
@@ -13,13 +14,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
-        android:layout_marginBottom="40dp"
         android:autofillHints="false"
         android:inputType="none"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="@string/display"
         android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -47,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/output"
         app:layout_constraintVertical_bias="0.31">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/decimalBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -62,7 +63,7 @@
             app:layout_constraintStart_toEndOf="@+id/zeroBTN"
             app:layout_constraintTop_toBottomOf="@+id/twoBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/equalsBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -77,7 +78,7 @@
             app:layout_constraintStart_toEndOf="@+id/decimalBTN"
             app:layout_constraintTop_toBottomOf="@+id/threeBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/zeroBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -93,7 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/oneBTN"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/oneBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -108,7 +109,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fourBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/twoBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -123,7 +124,7 @@
             app:layout_constraintStart_toEndOf="@+id/oneBTN"
             app:layout_constraintTop_toBottomOf="@+id/fiveBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/threeBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -138,7 +139,7 @@
             app:layout_constraintStart_toEndOf="@+id/twoBTN"
             app:layout_constraintTop_toBottomOf="@+id/sixBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fourBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -153,7 +154,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sevenBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fiveBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -168,7 +169,7 @@
             app:layout_constraintStart_toEndOf="@+id/fourBTN"
             app:layout_constraintTop_toBottomOf="@+id/eightBTN2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sixBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -183,7 +184,7 @@
             app:layout_constraintStart_toEndOf="@+id/fiveBTN"
             app:layout_constraintTop_toBottomOf="@+id/nineBTN2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sevenBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -198,7 +199,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clearBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/eightBTN2"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -213,7 +214,7 @@
             app:layout_constraintStart_toEndOf="@+id/sevenBTN"
             app:layout_constraintTop_toBottomOf="@+id/exponentBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nineBTN2"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -228,7 +229,7 @@
             app:layout_constraintStart_toEndOf="@+id/eightBTN2"
             app:layout_constraintTop_toBottomOf="@+id/parenthesisBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/additionBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -243,7 +244,7 @@
             app:layout_constraintStart_toEndOf="@+id/equalsBTN"
             app:layout_constraintTop_toBottomOf="@+id/minusBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/minusBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -258,7 +259,7 @@
             app:layout_constraintStart_toEndOf="@+id/threeBTN"
             app:layout_constraintTop_toBottomOf="@+id/multiplyBTN" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/multiplyBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -273,7 +274,7 @@
             app:layout_constraintStart_toEndOf="@+id/sixBTN"
             app:layout_constraintTop_toBottomOf="@+id/divideBTN2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/divideBTN2"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -289,7 +290,7 @@
             app:layout_constraintStart_toEndOf="@+id/nineBTN2"
             app:layout_constraintTop_toBottomOf="@+id/deleteBTN2" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/parenthesisBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -304,7 +305,7 @@
             app:layout_constraintStart_toEndOf="@+id/exponentBTN"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/exponentBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -319,7 +320,7 @@
             app:layout_constraintStart_toEndOf="@+id/clearBTN"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/clearBTN"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
@@ -327,7 +328,6 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/circle"
-            android:backgroundTint="#DD2C00"
             android:onClick="clearBTN"
             android:text="@string/clear"
             android:textColor="#000000"
@@ -335,7 +335,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/deleteBTN2"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
