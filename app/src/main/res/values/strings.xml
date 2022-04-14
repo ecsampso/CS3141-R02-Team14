@@ -20,11 +20,11 @@
     <string name="Equals">=</string>
     <string name="Decimal">.</string>
 
-    <string name = "clear">C</string>
-    <string name = "exponent">^</string>
-    <string name = "parenthesis">()</string>
-    <string name = "backspace">Del</string>
-    <string name ="negate">+/-</string>
+    <string name="clear">C</string>
+    <string name="exponent">^</string>
+    <string name="parenthesis">()</string>
+    <string name="backspace">Del</string>
+    <string name="negate">+/-</string>
 
     <string name="display">Enter a value</string>
 

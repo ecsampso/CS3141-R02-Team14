@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TSP7Calculator">
         <activity
+            android:name=".data"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

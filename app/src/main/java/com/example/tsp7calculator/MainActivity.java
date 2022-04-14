@@ -2,17 +2,22 @@ package com.example.tsp7calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import org.mariuszgromada.math.mxparser.*;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    //Button to move to other screen
+    private Button move;
 
     private EditText display;
     private TextView prevCalc;
@@ -37,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
                     display.setText("");
 
                 }
+            }
+        });
+        //Setting the move button to the button data
+        move=findViewById(R.id.Move);
+        //Creating the on click listener
+        move.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Changing the screen to the data screen
+                Intent intent = new Intent(MainActivity.this,data.class);
+                startActivity(intent);
             }
         });
     }
