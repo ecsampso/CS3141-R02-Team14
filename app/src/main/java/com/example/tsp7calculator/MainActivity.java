@@ -158,6 +158,14 @@ public class MainActivity extends AppCompatActivity {
         Expression exp = new Expression(userExp);
         String result = String.valueOf(exp.calculate());
 
+        for (int i = 0; i < result.length(); i++){
+            if (Character.compare(result.charAt(i), '.') == 0){
+                result = result.substring(0, i+5);
+                break;
+            }
+
+        }
+
         equals = true;
         prevCalc.setText(userExp);
         display.setText(result);
