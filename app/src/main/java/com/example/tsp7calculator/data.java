@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class data extends AppCompatActivity {
     //Button to move to calculator screen
-    Button b1,b2;
+    Button b1,b2, b3;
     EditText ed1,ed2;
 
     TextView tx1;
@@ -24,13 +24,15 @@ public class data extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 
-        b1 = (Button)findViewById(R.id.button);
-        ed1 = (EditText)findViewById(R.id.editText);
-        ed2 = (EditText)findViewById(R.id.editText2);
+        b1 = findViewById(R.id.button);
+        ed1 = findViewById(R.id.editText);
+        ed2 = findViewById(R.id.editText2);
 
-        b2 = (Button)findViewById(R.id.button2);
-        tx1 = (TextView)findViewById(R.id.textView3);
+        b2 = findViewById(R.id.button2);
+        tx1 = findViewById(R.id.textView3);
         tx1.setVisibility(View.GONE);
+
+        b3 = findViewById(R.id.createacc);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,14 @@ public class data extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), CreateAcc.class);
+                startActivity(myIntent);
             }
         });
     }

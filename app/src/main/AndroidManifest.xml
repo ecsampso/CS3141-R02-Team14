@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".CreateAcc"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 <!--            <intent-filter>-->
