@@ -12,7 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import android.graphics.Color;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText display;
     private TextView prevCalc;
     boolean equals = false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,26 +38,31 @@ public class MainActivity extends AppCompatActivity {
         display = findViewById(R.id.output);
         display.setShowSoftInputOnFocus(false);
 
-        display.setOnClickListener(new View.OnClickListener(){
+
+        display.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if (getString(R.string.display).equals(display.getText().toString())){
+            public void onClick(View v) {
+                if (getString(R.string.display).equals(display.getText().toString())) {
                     display.setText("");
 
                 }
             }
         });
+
+
+
+
         //Setting the move button to the button data
-        move=findViewById(R.id.Move);
-        //Creating the on click listener
-        move.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Changing the screen to the data screen
-                Intent intent = new Intent(MainActivity.this,data.class);
-                startActivity(intent);
-            }
-        });
+//        move=findViewById(R.id.Move);
+//        //Creating the on click listener
+//        move.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //Changing the screen to the data screen
+//                Intent intent = new Intent(MainActivity.this,data.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void updateText(String strToAdd){
