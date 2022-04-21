@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-    private void updateText(String strToAdd){
+    private void updateText(String strToAdd, int strLen){
         String oldStr = display.getText().toString();
         int cursorPos = display.getSelectionStart();
         String leftStr = oldStr.substring(0, cursorPos);
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (getString(R.string.display).equals(display.getText().toString())) {
             display.setText(strToAdd);
-            display.setSelection(cursorPos + 1);
+            display.setSelection(cursorPos + strLen);
         } else{
             display.setText(String.format("%s%s%s", leftStr, strToAdd, rightStr));
             display.setSelection(cursorPos + strToAdd.length());
@@ -85,46 +85,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void zeroBTN(View view){
-        updateText("0");
+        updateText("0", 1);
     }
     public void oneBTN(View view){
-         updateText("1");
+         updateText("1", 1);
     }
     public void twoBTN(View view){
-        updateText("2");
+        updateText("2", 1);
     }
     public void threeBTN(View view){
-        updateText("3");
+        updateText("3", 1);
     }
     public void fourBTN(View view){
-        updateText("4");
+        updateText("4", 1);
     }
     public void fiveBTN(View view){
-        updateText("5");
+        updateText("5", 1);
     }
     public void sixBTN(View view){
-        updateText("6");
+        updateText("6", 1);
     }
     public void sevenBTN(View view){
-        updateText("7");
+        updateText("7", 1);
     }
     public void eightBTN(View view){
-        updateText("8");
+        updateText("8", 1);
     }
     public void nineBTN(View view){
-        updateText("9");
+        updateText("9", 1);
     }
     public void addBTN(View view){
-        updateText("+");
+        updateText("+", 1);
     }
     public void subBTN(View view){
-        updateText("-");
+        updateText("-", 1);
     }
     public void divideBTN(View view){
-        updateText("/");
+        updateText("/", 1);
     }
-    public void mulBTN(View view){ updateText("*"); }
-    public void negateBTN(View view){ updateText("-"); }
+    public void mulBTN(View view){ updateText("*", 1); }
+    public void negateBTN(View view){ updateText("-", 1); }
     public void clearBTN(View view){ display.setText(""); }
     public void parenBTN(View view){
         int cursorPos = display.getSelectionStart();
@@ -144,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (openPar == closePar || display.getText().toString().substring(textLen-1, textLen).equals("(")){
-            updateText("(");
+            updateText("(", 1);
             display.setSelection(cursorPos + 1);
         }
 
         else if (closePar < openPar && !display.getText().toString().substring(textLen-1, textLen).equals("(")){
-            updateText(")");
+            updateText(")", 1);
             display.setSelection(cursorPos + 1);
         }
     }
@@ -177,56 +177,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void trigSinBTN(View view) {
-        updateText("sin(");
+        updateText("sin(",4);
     }
 
     public void trigCosBTN(View view) {
-        updateText("cos(");
+        updateText("cos(",4);
     }
 
     public void trigTanBTN(View view) {
-        updateText("tan(");
+        updateText("tan(",4);
     }
 
     public void trigInsinBTN(View view) {
-        updateText("arcsin(");
+        updateText("arcsin(",7);
     }
 
     public void trigIncosBTN(View view) {
-        updateText("arccos(");
+        updateText("arccos(",7);
     }
 
     public void trigIntanBTN(View view) {
-        updateText("arctan(");
+        updateText("arctan(",7);
     }
 
     public void trigLogBTN(View view) {
-        updateText("log(");
+        updateText("log(",4);
     }
 
     public void trigLnBTN(View view) {
-        updateText("ln(");
+        updateText("ln(",3);
     }
 
     public void trigSqrtBTN(View view) {
-        updateText("sqrt(");
+        updateText("sqrt(",5);
     }
 
     public void trigEBTN(View view) {
-        updateText("e");
+        updateText("e",1);
     }
 
     public void trigPiBTN(View view) {
-        updateText("pi");
+        updateText("pi",2);
     }
 
     public void trigAbsvalBTN(View view) {
-        updateText("abs(");
+        updateText("abs(",4);
     }
     public void expBTN(View view){
-        updateText("^(");
+        updateText("^(",2);
     }
     public void decimalBTN(View view){
-        updateText(".");
+        updateText(".",1);
     }
 }
