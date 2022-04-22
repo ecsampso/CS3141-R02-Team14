@@ -188,9 +188,11 @@ public class MainActivity extends AppCompatActivity {
                 //If there are not enough decimal places to be removed without messing
                 //with the scientific notation (ie: 3.2222E10), the string will be left alone
             }
-            //iIf there is not scientific notation, but still a decimal pt
+            //If there is not scientific notation, but still a decimal pt
             else{
-                result = result.substring(0, decPt + 5);
+                if (result.length() > decPt + 5) { //Making sure there needs to be decimals removed
+                    result = result.substring(0, decPt + 5);
+                }
             }
         }
 
