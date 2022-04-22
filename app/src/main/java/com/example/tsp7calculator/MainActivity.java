@@ -158,12 +158,40 @@ public class MainActivity extends AppCompatActivity {
         Expression exp = new Expression(userExp);
         String result = String.valueOf(exp.calculate());
 
+        int decPt = -1;
+        int sciNot = -1;
+
+        //Searching for scientific notation and decimal point
         for (int i = 0; i < result.length(); i++){
             if (Character.compare(result.charAt(i), '.') == 0){
-                result = result.substring(0, i+5);
-                break;
+                decPt = i;
             }
 
+            if (Character.compare(result.charAt(i), 'E') == 0){
+                sciNot = i; //Scientific notation implies there was already a decimal,
+                break;      //which is why we only break here
+
+            }
+
+        }
+
+
+
+        //Incurring decimal cap, accounting for scientific notation
+        if (decPt != -1) {
+            //if there is scientific notation
+            if (sciNot != -1) {
+                //If there enough decimal places that some need to be removed (ie: 3.2222222E10)
+                if (sciNot - decPt > 5) {
+                    result = result.substring(0, decPt + 5) + result.substring(sciNot, result.length());
+                }
+                //If there are not enough decimal places to be removed without messing
+                //with the scientific notation (ie: 3.2222E10), the string will be left alone
+            }
+            //iIf there is not scientific notation, but still a decimal pt
+            else{
+                result = result.substring(0, decPt + 5);
+            }
         }
 
         equals = true;
